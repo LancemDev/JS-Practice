@@ -1,5 +1,5 @@
-
-const api = "https://newsapi.org/v2/top-headlines?country=us&apiKey=6c82ec66d2ea40c586e897cdc47b4413"
+const api = "https://newsapi.org/v2/top-headlines?country=us&apiKey=6c82ec66d2ea40c586e897cdc47b4413";
+const div = document.getElementById('app');
 
 let toDo = new Promise((resolve, reject) => {
     const data = fetch(api)
@@ -21,6 +21,11 @@ let toDo = new Promise((resolve, reject) => {
 });
 
 toDo.then(
-    function(value){console.log(value);},
-    function(value){console.log(value);}
+    function(output){
+        console.log(output);
+        const newDiv = document.createElement('div');
+        newDiv.innerHTML = output;
+        div.appendChild(newDiv);
+    },
+    function(error){console.log(error);}
 );
